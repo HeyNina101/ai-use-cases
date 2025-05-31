@@ -1,0 +1,48 @@
+# rag_local.py
+
+1. Start the Ollama server in a separate terminal using `ollama serve`. This launches the local Ollama API server at http://localhost:11434.
+
+2. Run the script with `python rag_local.py`.
+
+3. The script initializes the embedding model using `nomic-embed-text` via LangChain’s `OllamaEmbeddings`. This converts text chunks into numerical vectors.
+
+4. It loads a PDF file using a loader like `PyPDFLoader`, extracting the full textual content of the document.
+
+5. The text is split into smaller chunks using `RecursiveCharacterTextSplitter`. Each chunk is around 1000 characters, with optional overlap.
+
+6. Each chunk is embedded using the model running locally in Ollama.
+
+7. These embeddings are stored in `ChromaDB`, a local vector database. If the database already exists, new chunks can be appended.
+
+8. A RAG chain is built using LangChain’s LCEL syntax. The pipeline includes a retriever for fetching relevant chunks, a prompt template, the `qwen:0.5b` model accessed via `ChatOllama`, and an output parser.
+
+9. When a question is submitted, LangChain computes its embedding, retrieves the most relevant chunks from ChromaDB, constructs the final prompt, queries the LLM, and parses the output.
+
+10. The final response is printed to the terminal. The answer is strictly based on the retrieved context, not general model knowledge.
+
+### Model Info
+
+**Model:** `qwen:0.5b`  
+Qwen 1.5 is a family of LLMs developed by Alibaba Cloud, ranging from 0.5B to 110B parameters.
+
+This model was selected for its low memory footprint and strong performance in local RAG pipelines. Despite its compact size (0.5B parameters), it supports a 32K context window, making it suitable for reasoning across multi-page documents.
+
+**Note:** `qwen:0.5b` is a general-purpose LLM and has **not** been fine-tuned for retrieval-augmented generation (RAG) or grounded QA. While effective in controlled settings, it may hallucinate if the context is weak or ambiguous.
+
+| Property        | Value            |
+|-----------------|------------------|
+| Size            | 395 MB           |
+| Context Length  | 32K tokens       |
+| Input Type      | Text             |
+| Developers      | Alibaba Cloud    |
+
+See: [https://ollama.com/library/qwen](https://ollama.com/library/qwen)
+
+## Acknowledgements
+
+This project adapts and extends the tutorial by Chaitanya Rahalkar  
+Source: [freeCodeCamp article](https://www.freecodecamp.org/news/build-a-local-ai/)  
+GitHub: [chaitanyarahalkar](https://github.com/chaitanyarahalkar)
+
+Adapted and maintained by Nina Fernanda Durán  
+GitHub: [HeyNina101](https://github.com/HeyNina101)

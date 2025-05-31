@@ -1,0 +1,26 @@
+# For freezxe versions pip freeze > requirements.txt
+
+# Core LangChain framework
+langchain
+langchain-core
+langchain-community
+
+# Ollama integration for local LLMs
+langchain-ollama
+
+# Vector store for embeddings and similarity search
+chromadb
+
+# Embedding generation (when not using model-native embeddings)
+# sentence-transformers
+
+# Basic PDF parsing (for well-structured PDFs)
+pypdf
+# Advanced PDF parsing (handles complex layouts and noisy documents)
+unstructured[pdf]
+
+# Load environment variables from a .env file
+python-dotenv
+
+# Token counting and context window management
+tiktoken

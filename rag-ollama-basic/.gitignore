@@ -1,0 +1,31 @@
+# Ignore virtual environments
+venv/
+.env
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# VS Code settings
+.vscode/
+
+# Local vector database (ChromaDB)
+chroma_db/
+
+# Log and runtime files
+*.log
+*.pid
+
+# User and backup files
+*.swp
+*.swo
+*~
+*.bak
+
+# Ignore PDF documents in the data folder (optional)
+data/*.pdf
+
+# Ollama cache and models (optional, if not shared)
+~/.ollama/

@@ -1,0 +1,16 @@
+# For freezxe versions pip freeze > requirements.txt
+
+# Core LangChain framework
+langchain
+langchain-core
+langchain-community
+
+# Ollama integration for local LLMs
+langchain-ollama
+
+# Vector store for embeddings and similarity search
+chromadb
+
+# Load environment variables from a .env file
+python-dotenv
+

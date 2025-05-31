@@ -1,0 +1,49 @@
+# agent_local.py
+
+1. Run `ollama serve` in one terminal to launch the local model server.
+
+2. Run `python agent_local.py` in another terminal to start the agent.
+
+3. The script loads a local model via `ChatOllama`, registers Python tools using the `@tool` decorator, and builds a structured prompt for tool-using agents.
+
+4. The agent receives a user query and begins step-by-step reasoning using the ReAct pattern.
+
+5. The model generates a **Thought** indicating its reasoning.
+
+6. The model selects an **Action** and the arguments required.
+
+7. The `AgentExecutor` runs the corresponding Python function (tool).
+
+8. The tool’s result is returned as an **Observation**.
+
+9. The model receives the observation and continues reasoning until it produces a final answer.
+
+10. If `verbose=True`, each step of the reasoning is printed to the console.
+
+11. Each call to `run_agent()` is stateless and does not retain prior context. If you want the agent to remember previous interactions, you must manually pass a `chat_history` object to preserve memory across runs. Keep in mind that the model’s `context_window` only defines the maximum token limit per interaction — not persistent memory.
+
+
+### Model Info
+
+**Model**: `granite3-dense:2b`
+
+The IBM Granite 2B and 8B models are designed to support tool-based use cases and retrieval-augmented generation (RAG), streamlining code generation, translation, and bug fixing.
+
+| Property        | Value                  |
+|-----------------|------------------------|
+| Size            | 1.6 GB                 |
+| Context Length  | 4K tokens              |
+| Input Type      | Text                   |
+| Release Date    | October 21st, 2024     |
+| License         | Apache 2.0             |
+| Developers      | IBM Research           |
+
+See: [https://ollama.com/library/granite3-dense](https://ollama.com/library/granite3-dense)
+
+## Acknowledgements
+
+This project adapts and extends the tutorial by Chaitanya Rahalkar  
+Source: [freeCodeCamp article](https://www.freecodecamp.org/news/build-a-local-ai/)  
+GitHub: [chaitanyarahalkar](https://github.com/chaitanyarahalkar)
+
+Adapted and maintained by Nina Fernanda Durán (https://github.com/HeyNina101/)

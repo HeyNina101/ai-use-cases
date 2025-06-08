@@ -1,4 +1,4 @@
-# AI Use Case
+# AI'm In
 
 This repository collects real use cases of applied AI, focused on backend systems, automation, agents, and integration workflows. Each case is implemented with functional code and clear structure. Technologies include Python, n8n, Make, LangChain, local models, and custom pipelines.
 
